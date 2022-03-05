@@ -1,0 +1,19 @@
+{
+  "name": "rrule-input-js",
+  "version": "0.1.0",
+  "description": "",
+  "scripts": {
+    "demo": "webpack-dev-server --mode development",
+    "build": "webpack --mode production"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "webpack": "^5.69.1",
+    "webpack-cli": "^4.9.2"
+  },
+  "devDependencies": {
+    "webpack-dev-server": "^4.7.4"
+  }
+}

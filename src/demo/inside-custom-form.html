@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Rrule demo</title>
+
+    <style>
+      .rrule div {
+        margin-bottom: 1em;
+      }
+
+      .rrule-container {
+        margin: 3em 0;
+      }
+    </style>
+  </head>
+  <body>
+    <h3>Inside custom form</h3>
+
+    <form name="custom-form">
+      <input placeholder="Custom field 1" />
+      <input placeholder="Custom field 2" />
+
+      <p>Other fields...</p>
+
+      <div class="rrule-container"></div>
+
+      <input type="submit" value="Submit form" />
+    </form>
+
+    <script src="rrule-bundle.js"></script>
+
+    <script>
+      document.forms['custom-form'].addEventListener('submit', (e) => {
+        e.preventDefault();
+
+        console.log(e.target['rrule-result'].value);
+      });
+    </script>
+  </body>
+</html>
