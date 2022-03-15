@@ -2,7 +2,7 @@
 
 rrule input javascript library.
 
-Available on npm as [@linkorb/rrule-input-js](https://www.npmjs.com/package/@linkorb/rrule-input-js))
+Available on npm as [@linkorb/rrule-input-js](https://www.npmjs.com/package/@linkorb/rrule-input-js)
 
 ### Usage
 1. Install dependencies
