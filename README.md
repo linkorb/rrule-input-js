@@ -30,6 +30,13 @@ npm install
 npm run demo
 ```
 
-Demo contains two examples:
+Demo contains three examples:
 - separate use (see `./src/demo/separate-use.html` for markup example)
 - inside custom form (see `./src/demo/inside-custom-form.html` for markup example). This example also contains `Submit form` button, the rrule string will be logged in the browser console when that button is clicked.
+- predefined form (see `./src/demo/predefined-form.html` for markup example). This example does not have a form container and has a predefined form instead. In this case (when the container does not exist) the script looks for the form (by `.rrule` selector) and handles it.
+
+#### Running demo in a docker container:
+
+```sh
+docker build --tag demo . && docker run --publish 8080:3000 demo
+```

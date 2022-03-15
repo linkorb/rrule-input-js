@@ -4,7 +4,9 @@ const containerClassname = CONTAINER_CLASSNAMES.find((classname) =>
   document.querySelector(`.${classname}`),
 );
 
-document.querySelector(`.${containerClassname}`).innerHTML = `
+const container = document.querySelector(`.${containerClassname}`);
+
+if (container) container.innerHTML = `
   <div class="rrule">
     <div class="rrule-freq">
       <select class="rrule-freq-select">
@@ -461,6 +463,10 @@ const rrule = {
 };
 
 window.addEventListener('DOMContentLoaded', () => {
+  const rruleForm = document.querySelector('.rrule');
+
+  if (!rruleForm) return;
+
   document
     .querySelector('.rrule .rrule-freq-select')
     .addEventListener('change', (e) => {
