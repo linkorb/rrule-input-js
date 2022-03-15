@@ -1,6 +1,8 @@
 # rrule-input-js
 
-rrule input javascript library
+rrule input javascript library.
+
+Available on npm as [@linkorb/rrule-input-js](https://www.npmjs.com/package/@linkorb/rrule-input-js))
 
 ### Usage
 1. Install dependencies
@@ -38,5 +40,5 @@ Demo contains three examples:
 #### Running demo in a docker container:
 
 ```sh
-docker build --tag demo . && docker run --publish 8080:3000 demo
+docker build --tag rrule-demo . && docker run --publish 8080:3000 rrule-demo
 ```
