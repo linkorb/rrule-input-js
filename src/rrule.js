@@ -1,12 +1,13 @@
 const CONTAINER_CLASSNAMES = ['rrule-container'];
 
 const containerClassname = CONTAINER_CLASSNAMES.find((classname) =>
-  document.querySelector(`.${classname}`),
+  document.querySelector(`.${classname}`)
 );
 
 const container = document.querySelector(`.${containerClassname}`);
 
-if (container) container.innerHTML = `
+if (container)
+  container.innerHTML = `
   <div class="rrule">
     <div class="rrule-freq">
       <select class="rrule-freq-select">
@@ -251,7 +252,7 @@ const rrule = {
         .display !== 'none'
     ) {
       let interval = Math.round(
-        document.querySelector('.rrule-end .rrule-interval').value,
+        document.querySelector('.rrule-end .rrule-interval').value
       );
 
       if (!Number.isInteger(interval) || interval < 1) interval = 1;
@@ -294,10 +295,10 @@ const rrule = {
     switch (ruleType) {
       case 'yearly-on': {
         const month = document.querySelector(
-          '.rrule .rrule-yearly .rrule-yearly-on .rrule-month',
+          '.rrule .rrule-yearly .rrule-yearly-on .rrule-month'
         ).value;
         const monthday = document.querySelector(
-          '.rrule .rrule-yearly .rrule-yearly-on .rrule-monthday',
+          '.rrule .rrule-yearly .rrule-yearly-on .rrule-monthday'
         ).value;
 
         rrule.asString =
@@ -313,13 +314,13 @@ const rrule = {
 
       case 'yearly-onthe': {
         const month = document.querySelector(
-          '.rrule .rrule-yearly .rrule-yearly-onthe .rrule-month',
+          '.rrule .rrule-yearly .rrule-yearly-onthe .rrule-month'
         ).value;
         const day = document.querySelector(
-          '.rrule .rrule-yearly .rrule-yearly-onthe .rrule-day',
+          '.rrule .rrule-yearly .rrule-yearly-onthe .rrule-day'
         ).value;
         const nth = document.querySelector(
-          '.rrule .rrule-yearly .rrule-yearly-onthe .rrule-nth',
+          '.rrule .rrule-yearly .rrule-yearly-onthe .rrule-nth'
         ).value;
 
         rrule.asString =
@@ -337,10 +338,10 @@ const rrule = {
 
       case 'monthly-on': {
         const monthday = document.querySelector(
-          '.rrule .rrule-monthly .rrule-monthly-on .rrule-monthday',
+          '.rrule .rrule-monthly .rrule-monthly-on .rrule-monthday'
         ).value;
         const interval = Math.round(
-          document.querySelector('.rrule .rrule-monthly .rrule-interval').value,
+          document.querySelector('.rrule .rrule-monthly .rrule-interval').value
         );
 
         if (!Number.isInteger(interval) || interval < 1) interval = 1;
@@ -358,16 +359,16 @@ const rrule = {
 
       case 'monthly-onthe': {
         const interval = Math.round(
-          document.querySelector('.rrule .rrule-monthly .rrule-interval').value,
+          document.querySelector('.rrule .rrule-monthly .rrule-interval').value
         );
 
         if (!Number.isInteger(interval) || interval < 1) interval = 1;
 
         const day = document.querySelector(
-          '.rrule .rrule-monthly .rrule-monthly-onthe .rrule-day',
+          '.rrule .rrule-monthly .rrule-monthly-onthe .rrule-day'
         ).value;
         const nth = document.querySelector(
-          '.rrule .rrule-monthly .rrule-monthly-onthe .rrule-nth',
+          '.rrule .rrule-monthly .rrule-monthly-onthe .rrule-nth'
         ).value;
 
         rrule.asString =
@@ -385,7 +386,7 @@ const rrule = {
 
       case 'weekly': {
         const interval = Math.round(
-          document.querySelector('.rrule .rrule-weekly .rrule-interval').value,
+          document.querySelector('.rrule .rrule-weekly .rrule-interval').value
         );
 
         if (!Number.isInteger(interval) || interval < 1) interval = 1;
@@ -394,7 +395,7 @@ const rrule = {
 
         Array.prototype.forEach.call(
           document.querySelectorAll(
-            '.rrule .rrule-weekly input[type="checkbox"]:checked',
+            '.rrule .rrule-weekly input[type="checkbox"]:checked'
           ),
           (el, idx) => {
             if (el.checked) {
@@ -402,7 +403,7 @@ const rrule = {
 
               days += el.value;
             }
-          },
+          }
         );
 
         if (days.length == 0) days = rrule.days[rrule.day];
@@ -420,7 +421,7 @@ const rrule = {
 
       case 'daily': {
         const interval = Math.round(
-          document.querySelector('.rrule .rrule-daily .rrule-interval').value,
+          document.querySelector('.rrule .rrule-daily .rrule-interval').value
         );
 
         if (!Number.isInteger(interval) || interval < 1) interval = 1;
@@ -459,7 +460,7 @@ const rrule = {
 
       end = ';COUNT=' + date.getFullYear() + month + day;
     }
-  },
+  }
 };
 
 window.addEventListener('DOMContentLoaded', () => {
@@ -504,12 +505,12 @@ window.addEventListener('DOMContentLoaded', () => {
                   el.querySelectorAll('[data-selector]'),
                   (el) =>
                     ['block', 'inline'].includes(
-                      window.getComputedStyle(el).display,
-                    ),
-                ).dataset.selector,
+                      window.getComputedStyle(el).display
+                    )
+                ).dataset.selector
               );
             }
-        },
+        }
       );
     });
 
@@ -526,19 +527,19 @@ window.addEventListener('DOMContentLoaded', () => {
     .addEventListener('change', (e) => {
       if (e.target.value === 'on') {
         document.querySelector(
-          '.rrule .rrule-monthly .rrule-monthly-on',
+          '.rrule .rrule-monthly .rrule-monthly-on'
         ).style.display = 'inline';
         document.querySelector(
-          '.rrule .rrule-monthly .rrule-monthly-onthe',
+          '.rrule .rrule-monthly .rrule-monthly-onthe'
         ).style.display = 'none';
 
         rrule.updateRrule('monthly-on');
       } else {
         document.querySelector(
-          '.rrule .rrule-monthly .rrule-monthly-on',
+          '.rrule .rrule-monthly .rrule-monthly-on'
         ).style.display = 'none';
         document.querySelector(
-          '.rrule .rrule-monthly .rrule-monthly-onthe',
+          '.rrule .rrule-monthly .rrule-monthly-onthe'
         ).style.display = 'inline';
 
         rrule.updateRrule('monthly-onthe');
@@ -550,19 +551,19 @@ window.addEventListener('DOMContentLoaded', () => {
     .addEventListener('change', (e) => {
       if (e.target.value === 'on') {
         document.querySelector(
-          '.rrule .rrule-yearly .rrule-yearly-on',
+          '.rrule .rrule-yearly .rrule-yearly-on'
         ).style.display = 'inline';
         document.querySelector(
-          '.rrule .rrule-yearly .rrule-yearly-onthe',
+          '.rrule .rrule-yearly .rrule-yearly-onthe'
         ).style.display = 'none';
 
         rrule.updateRrule('yearly-on');
       } else {
         document.querySelector(
-          '.rrule .rrule-yearly .rrule-yearly-on',
+          '.rrule .rrule-yearly .rrule-yearly-on'
         ).style.display = 'none';
         document.querySelector(
-          '.rrule .rrule-yearly .rrule-yearly-onthe',
+          '.rrule .rrule-yearly .rrule-yearly-onthe'
         ).style.display = 'inline';
 
         rrule.updateRrule('yearly-onthe');
@@ -590,7 +591,7 @@ window.addEventListener('DOMContentLoaded', () => {
       const days = rrule.monthdays[selectedMonth];
 
       const monthday = document.querySelector(
-        '.rrule .rrule-yearly .rrule-yearly-on .rrule-monthday',
+        '.rrule .rrule-yearly .rrule-yearly-on .rrule-monthday'
       );
 
       let html = '';
@@ -612,7 +613,7 @@ window.addEventListener('DOMContentLoaded', () => {
     });
 
   document.querySelector(
-    '.rrule .rrule-yearly .rrule-yearly-on .rrule-month',
+    '.rrule .rrule-yearly .rrule-yearly-on .rrule-month'
   ).value = rrule.humanMonth;
 
   document
@@ -672,29 +673,94 @@ window.addEventListener('DOMContentLoaded', () => {
 
   Array.prototype.forEach.call(
     document.querySelectorAll(
-      '.rrule .rrule-yearly .rrule-yearly-onthe select',
+      '.rrule .rrule-yearly .rrule-yearly-onthe select'
     ),
     (el) => {
       el.addEventListener('change', (e) => rrule.updateRrule('yearly-onthe'));
-    },
+    }
   );
 
   Array.prototype.forEach.call(
     document.querySelectorAll('.rrule .rrule-weekly input'),
     (el) => {
       el.addEventListener('change', (e) => rrule.updateRrule('weekly'));
-    },
+    }
   );
 
   Array.prototype.forEach.call(
     document.querySelectorAll('.rrule .rrule-monthly-onthe select'),
     (el) =>
-      el.addEventListener('change', () => rrule.updateRrule('monthly-onthe')),
+      el.addEventListener('change', () => rrule.updateRrule('monthly-onthe'))
   );
+
+  const excludeAttributes = ['BYSETPOS', 'COUNT', 'DTSTART'];
+
+  if (excludeAttributes.some((val) => getAttributeValue(val))) {
+    setCustomMode();
+  } else {
+    const period = getAttributeValue('FREQ');
+
+    document.querySelector('.rrule-freq-select').value = `RRULE-${period}`;
+    document.querySelector('.rrule-yearly').style.display = 'none';
+
+    switch (period) {
+      case 'YEARLY': {
+        document.querySelector('.rrule-yearly').style.display = 'block';
+
+        document.querySelector('.rrule-month').value =
+          getAttributeValue('BYMONTH');
+        document.querySelector('.rrule-monthday').value =
+          getAttributeValue('BYMONTHDAY');
+
+        break;
+      }
+
+      case 'MONTHLY': {
+        document.querySelector('.rrule-monthly').style.display = 'block';
+
+        document.querySelector('.rrule-monthly-on .rrule-monthday').value =
+          getAttributeValue('BYMONTHDAY');
+        document.querySelector('.rrule-interval').value =
+          getAttributeValue('INTERVAL');
+
+        break;
+      }
+
+      case 'WEEKLY': {
+        document.querySelector('.rrule-weekly').style.display = 'block';
+
+        document.querySelector('.rrule-weekly .rrule-interval').value =
+          getAttributeValue('INTERVAL');
+
+        getAttributeValue('BYDAY')
+          .split(',')
+          .forEach(
+            (day) =>
+              (document.querySelector(
+                `.rrule-days [value=${day}]`
+              ).checked = true)
+          );
+
+        break;
+      }
+
+      case 'DAILY': {
+        document.querySelector('.rrule-daily').style.display = 'block';
+
+        document.querySelector('.rrule-daily .rrule-interval').value =
+          getAttributeValue('INTERVAL');
+
+        break;
+      }
+
+      default:
+        setCustomMode();
+    }
+  }
 
   function selectedType() {
     const el = document.querySelector(
-      `.${document.querySelector('.rrule-freq-select').value.toLowerCase()}`,
+      `.${document.querySelector('.rrule-freq-select').value.toLowerCase()}`
     );
 
     if (['weekly', 'daily', 'custom'].includes(el.dataset.selector))
@@ -702,7 +768,32 @@ window.addEventListener('DOMContentLoaded', () => {
 
     return Array.prototype.find.call(
       el.querySelectorAll('[data-selector]'),
-      (el) => ['block', 'inline'].includes(window.getComputedStyle(el).display),
+      (el) => ['block', 'inline'].includes(window.getComputedStyle(el).display)
     ).dataset.selector;
+  }
+
+  function getAttributeValue(name) {
+    const regExp = new RegExp(`${name}=((\\w|,)*)`, 'i');
+
+    const result = document.querySelector('#rrule-result').value.match(regExp);
+
+    if (excludeAttributes.includes(name)) return result && result[1];
+    else if (!result || !result[1]) setCustomMode();
+    else return result[1];
+  }
+
+  function setCustomMode() {
+    document.querySelector('.rrule-freq-select').value = `RRULE-CUSTOM`;
+
+    [
+      'rrule-yearly',
+      'rrule-monthly',
+      'rrule-weekly',
+      'rrule-daily',
+      'rrule-start',
+      'rrule-end'
+    ].forEach(
+      (val) => (document.querySelector(`.${val}`).style.display = 'none')
+    );
   }
 });
