@@ -666,7 +666,7 @@ window.addEventListener('DOMContentLoaded', () => {
       document.getElementById('rrule-result').value = `DTSTART:${date
         .toISOString()
         .split('.')[0]
-        .replace(/[-:]/g, '')}ZRRULE${
+        .replace(/[-:]/g, '')}Z;RRULE${
         document.querySelector('#rrule-result').value.split('RRULE')[1]
       }`;
     });
