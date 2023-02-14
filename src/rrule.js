@@ -6,6 +6,8 @@ const containerClassname = CONTAINER_CLASSNAMES.find((classname) =>
 
 const container = document.querySelector(`.${containerClassname}`);
 
+let prefilledValue;
+
 if (container)
   container.innerHTML = `
   <div class="rrule">
@@ -468,6 +470,9 @@ window.addEventListener('DOMContentLoaded', () => {
 
   if (!rruleForm) return;
 
+  if (document.querySelector('#rrule-result').value)
+    prefilledValue = document.querySelector('#rrule-result').value;
+
   document
     .querySelector('.rrule .rrule-freq-select')
     .addEventListener('change', (e) => {
@@ -756,6 +761,8 @@ window.addEventListener('DOMContentLoaded', () => {
       default:
         setCustomMode();
     }
+
+    document.querySelector('#rrule-result').value = prefilledValue;
   }
 
   function selectedType() {
@@ -775,7 +782,7 @@ window.addEventListener('DOMContentLoaded', () => {
   function getAttributeValue(name) {
     const regExp = new RegExp(`${name}=((\\w|,)*)`, 'i');
 
-    const result = document.querySelector('#rrule-result').value.match(regExp);
+    const result = prefilledValue.match(regExp);
 
     if (excludeAttributes.includes(name)) return result && result[1];
     else if (!result || !result[1]) setCustomMode();
@@ -795,5 +802,7 @@ window.addEventListener('DOMContentLoaded', () => {
     ].forEach(
       (val) => (document.querySelector(`.${val}`).style.display = 'none')
     );
+
+    rrule.updateRrule('custom');
   }
 });
